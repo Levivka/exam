@@ -65,7 +65,7 @@ namespace exam2try
         private void convertBT_Click(object sender, EventArgs e)
         {
             double currencyFirstResult = 0, currencySecondResult = 0;
-            if (currencyTB.Text != " " && currencyResultCB != null && currencyCB != null)
+            if (currencyTB.Text != "" && currencyResultCB.Text != "" && currencyCB.Text != "")
             {
                 NpgsqlConnection conn = new NpgsqlConnection(connString);
                 conn.Open();
@@ -86,8 +86,7 @@ namespace exam2try
                     }
                 }
                 double.TryParse(currencyTB.Text, out double currencyAmmount);
-                double currencyFirstRub = currencyFirstResult * currencyAmmount;
-                double finalCurrency = currencyFirstRub / currencySecondResult;
+                double finalCurrency = (currencyFirstResult * currencyAmmount) / currencySecondResult;
                 currencyResultLB.Text = finalCurrency.ToString();
             }
         }

@@ -38,6 +38,7 @@
             currencyResultLB = new Label();
             currencyCB = new ComboBox();
             currencyTB = new TextBox();
+            saveBT = new Button();
             mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)currencyDG).BeginInit();
             SuspendLayout();
@@ -46,6 +47,7 @@
             // 
             mainPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             mainPanel.AutoScroll = true;
+            mainPanel.Controls.Add(saveBT);
             mainPanel.Controls.Add(currencyDG);
             mainPanel.Controls.Add(convertBT);
             mainPanel.Controls.Add(currencyResultCB);
@@ -143,6 +145,15 @@
             currencyTB.Size = new Size(151, 27);
             currencyTB.TabIndex = 5;
             // 
+            // saveBT
+            // 
+            saveBT.Location = new Point(530, 227);
+            saveBT.Name = "saveBT";
+            saveBT.Size = new Size(267, 29);
+            saveBT.TabIndex = 11;
+            saveBT.Text = "Сохранить список валюты в файл";
+            saveBT.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -170,5 +181,6 @@
         private DataGridViewTextBoxColumn name;
         private DataGridViewTextBoxColumn reduction;
         private DataGridViewTextBoxColumn convert;
+        private Button saveBT;
     }
 }
