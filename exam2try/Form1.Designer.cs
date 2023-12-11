@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             mainPanel = new Panel();
+            saveBT = new Button();
             currencyDG = new DataGridView();
-            name = new DataGridViewTextBoxColumn();
-            reduction = new DataGridViewTextBoxColumn();
-            convert = new DataGridViewTextBoxColumn();
             convertBT = new Button();
             currencyResultCB = new ComboBox();
             currencyResultLB = new Label();
             currencyCB = new ComboBox();
             currencyTB = new TextBox();
-            saveBT = new Button();
+            name = new DataGridViewTextBoxColumn();
+            reduction = new DataGridViewTextBoxColumn();
+            convert = new DataGridViewTextBoxColumn();
             mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)currencyDG).BeginInit();
             SuspendLayout();
@@ -59,6 +59,16 @@
             mainPanel.Size = new Size(800, 450);
             mainPanel.TabIndex = 5;
             // 
+            // saveBT
+            // 
+            saveBT.Location = new Point(530, 227);
+            saveBT.Name = "saveBT";
+            saveBT.Size = new Size(267, 29);
+            saveBT.TabIndex = 11;
+            saveBT.Text = "Сохранить список валюты в файл";
+            saveBT.UseVisualStyleBackColor = true;
+            saveBT.Click += saveBT_Click;
+            // 
             // currencyDG
             // 
             currencyDG.AllowUserToAddRows = false;
@@ -70,38 +80,10 @@
             currencyDG.Columns.AddRange(new DataGridViewColumn[] { name, reduction, convert });
             currencyDG.Location = new Point(0, 262);
             currencyDG.Name = "currencyDG";
-            currencyDG.ReadOnly = true;
             currencyDG.RowHeadersWidth = 51;
             currencyDG.RowTemplate.Height = 29;
             currencyDG.Size = new Size(800, 188);
             currencyDG.TabIndex = 10;
-            // 
-            // name
-            // 
-            name.Frozen = true;
-            name.HeaderText = "Название валюты";
-            name.MinimumWidth = 6;
-            name.Name = "name";
-            name.ReadOnly = true;
-            name.Width = 250;
-            // 
-            // reduction
-            // 
-            reduction.Frozen = true;
-            reduction.HeaderText = "Сокращение названия валюты";
-            reduction.MinimumWidth = 6;
-            reduction.Name = "reduction";
-            reduction.ReadOnly = true;
-            reduction.Width = 250;
-            // 
-            // convert
-            // 
-            convert.Frozen = true;
-            convert.HeaderText = "Курс относительно рубля";
-            convert.MinimumWidth = 6;
-            convert.Name = "convert";
-            convert.ReadOnly = true;
-            convert.Width = 250;
             // 
             // convertBT
             // 
@@ -145,14 +127,31 @@
             currencyTB.Size = new Size(151, 27);
             currencyTB.TabIndex = 5;
             // 
-            // saveBT
+            // name
             // 
-            saveBT.Location = new Point(530, 227);
-            saveBT.Name = "saveBT";
-            saveBT.Size = new Size(267, 29);
-            saveBT.TabIndex = 11;
-            saveBT.Text = "Сохранить список валюты в файл";
-            saveBT.UseVisualStyleBackColor = true;
+            name.Frozen = true;
+            name.HeaderText = "Название валюты";
+            name.MinimumWidth = 6;
+            name.Name = "name";
+            name.ReadOnly = true;
+            name.Width = 250;
+            // 
+            // reduction
+            // 
+            reduction.Frozen = true;
+            reduction.HeaderText = "Сокращение названия валюты";
+            reduction.MinimumWidth = 6;
+            reduction.Name = "reduction";
+            reduction.ReadOnly = true;
+            reduction.Width = 250;
+            // 
+            // convert
+            // 
+            convert.Frozen = true;
+            convert.HeaderText = "Курс относительно рубля";
+            convert.MinimumWidth = 6;
+            convert.Name = "convert";
+            convert.Width = 250;
             // 
             // Form1
             // 
@@ -178,9 +177,9 @@
         private ComboBox currencyCB;
         private TextBox currencyTB;
         private DataGridView currencyDG;
+        private Button saveBT;
         private DataGridViewTextBoxColumn name;
         private DataGridViewTextBoxColumn reduction;
         private DataGridViewTextBoxColumn convert;
-        private Button saveBT;
     }
 }

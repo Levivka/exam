@@ -1,5 +1,8 @@
+using Newtonsoft.Json;
 using Npgsql;
+using System.Text.Json;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace exam2try
 {
@@ -89,6 +92,53 @@ namespace exam2try
                 double finalCurrency = (currencyFirstResult * currencyAmmount) / currencySecondResult;
                 currencyResultLB.Text = finalCurrency.ToString();
             }
+        }
+
+        private void currencySave()
+        {
+            List<Currency> currencyList = new List<Currency>();
+            DateTime today = DateTime.Today;
+
+            foreach (DataGridViewRow row in currencyDG.Rows)
+            {
+                Currency currency = new Currency
+                {
+                    CurrencyName = row.Cells["name"].Value.ToString(),
+                    CurrencyReduction = row.Cells["reduction"].Value.ToString(),
+                    СurrencyVal = Convert.ToDouble(row.Cells["convert"].Value)
+                };
+                currencyList.Add(currency);
+            }
+
+            var datasave = new Save()
+            {
+                Date = today,
+                Data = currencyList.ToArray()
+            };
+
+            var json = JsonConvert.SerializeObject(datasave, Newtonsoft.Json.Formatting.Indented);
+            string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "exam");
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            try
+            {
+                using (StreamWriter sr = new StreamWriter(Path.Combine(path, "save.json")))
+                {
+                    sr.WriteLine(json);
+                    MessageBox.Show($"Запись в файл по пути {path} прошла успешна");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Не получилось записать данные в файл код ошибки {ex}");
+            }
+        }
+
+        private void saveBT_Click(object sender, EventArgs e)
+        {
+            currencySave();
         }
     }
 }
